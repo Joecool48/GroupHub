@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
