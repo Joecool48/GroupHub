@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "648525018724",
+    "firebase_url": "https://grouphub-e5dab.firebaseio.com",
+    "project_id": "grouphub-e5dab",
+    "storage_bucket": "grouphub-e5dab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648525018724:android:8c5ad1aedfc39cf3",
+        "android_client_info": {
+          "package_name": "com.grouphub.grouphub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648525018724-vlalhn14up1uu239u1nvcfdua5h0kk8n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.grouphub.grouphub",
+            "certificate_hash": "58eab85c8191781a0647e0fc6a4ff4d75a807279"
+          }
+        },
+        {
+          "client_id": "648525018724-du0uiai739ssjg36dp50gcusj3mo78a6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu9w9hbt23hclxg2OT17p-ZYQhCS4OY0g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648525018724-du0uiai739ssjg36dp50gcusj3mo78a6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

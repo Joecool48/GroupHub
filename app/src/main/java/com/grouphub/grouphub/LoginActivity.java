@@ -2,24 +2,25 @@ package com.grouphub.grouphub;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.grouphub.grouphub.R.id.progressBar;
+public class LoginActivity extends AppCompatActivity {
 
-public class MainLogin extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "LoginActivity";
     private FirebaseAuth auth;
     private EditText signupInputEmail, signupInputPassword;
     private TextInputLayout signupInputLayoutEmail, signupInputLayoutPassword;
@@ -29,7 +30,7 @@ public class MainLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
         signupInputEmail = (EditText) findViewById(R.id.signup_input_email);
         signupInputPassword = (EditText) findViewById(R.id.signup_input_password);
@@ -48,7 +49,7 @@ public class MainLogin extends AppCompatActivity {
         btnLinkToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(intent);
             }
         });
@@ -62,23 +63,27 @@ public class MainLogin extends AppCompatActivity {
         signupInputLayoutEmail.setErrorEnabled(false);
         signupInputLayoutPassword.setErrorEnabled(false);
         progressBar.setVisibility(View.VISIBLE);
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(email, password);
+        auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-                        progressBar.setProgress(View.GONE);
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        // If sign in fails, Log a message to the LogCat. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        progressBar.setVisibility(View.GONE);
                         if (!task.isSuccessful()) {
-                            Log.d(TAG, "Authentication failed." + task.getException());
+                            // there was an error
+                            Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+
                         } else {
-                            startActivity (new Intent(SignupActivity.this, UserActivity.class));
+                            Intent intent = new Intent(LoginActivity.this, UserActivity.class);
+                            startActivity(intent);
                             finish();
                         }
                     }
                 });
-        Toast.makeText(getApplicationContext(), "You are successfully Registered!", Toast.LENGTH_SHORT);
     }
-
     private boolean checkEmail() {
         String email = signupInputEmail.getText().toString().trim();
         if (email.isEmpty() || !isEmailValid(email)) {
