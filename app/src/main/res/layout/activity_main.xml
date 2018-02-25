@@ -6,70 +6,35 @@
     android:layout_height="match_parent"
     tools:context="com.grouphub.grouphub.MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="241dp"
-        android:layout_height="47dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="Pick a category:"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_dark"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+    <!--<TextView-->
+        <!--android:id="@+id/textView"-->
+        <!--android:layout_width="241dp"-->
+        <!--android:layout_height="47dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="49dp"-->
+        <!--android:fontFamily="sans-serif-condensed"-->
+        <!--android:text="Pick a category:"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textColor="@android:color/background_dark"-->
+        <!--android:textSize="30sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.497"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.102" />-->
 
-    <Button
-        android:id="@+id/button"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="140dp"
-        android:layout_height="112dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="@android:color/background_light"
-        android:drawableLeft="@android:drawable/ic_lock_idle_alarm"
-        android:text="Study"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="157dp" />
-
-
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="140dp"
-        android:layout_height="112dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="@android:color/background_light"
-        android:drawableLeft="@mipmap/ic_launcher_round"
-        android:text="Hangout"
-        tools:layout_editor_absoluteX="200dp"
-        tools:layout_editor_absoluteY="400dp" />
-
-
-    <Button
-        android:id="@+id/button2"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="140dp"
-        android:layout_height="112dp"
-        android:layout_alignStart="@+id/button"
-        android:layout_below="@+id/button"
-        android:layout_marginTop="38dp"
-        android:backgroundTint="@android:color/background_light"
-        android:drawableLeft="@android:drawable/ic_lock_idle_alarm"
-        android:text="Study"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="157dp" />
-
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnWidth="100dp"
+        android:numColumns="2"
+        android:verticalSpacing="10dp"
+        android:horizontalSpacing="10dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        />
 
 </RelativeLayout>
